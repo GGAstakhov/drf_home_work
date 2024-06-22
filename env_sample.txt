@@ -1,0 +1,5 @@
+SECRET_KEY=django-insecure-4r@1+(ahf$en$-8!11vb)rskbw#ldg0u-fj1t^+lqucg**$#jz
+ENGINE=django.db.backends.postgresql
+NAME_DB=drf
+USER_DB=postgres
+PASSWORD_DB=Kaktys_1104
