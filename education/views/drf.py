@@ -6,7 +6,8 @@ from rest_framework.generics import (CreateAPIView, DestroyAPIView,
 from rest_framework.viewsets import ModelViewSet
 
 from education.models import Course, Lesson, Payment
-from education.serializers import CourseSerializer, LessonSerializer, PaymentSerializer
+from education.serializers import (CourseSerializer, LessonSerializer,
+                                   PaymentSerializer)
 
 
 # ViewSet для модели Курса
@@ -14,7 +15,7 @@ class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
 
     def get_serializer_class(self):
-        if self.action == 'retrieve':
+        if self.action == "retrieve":
             return CourseSerializer
         return CourseSerializer
 
@@ -54,5 +55,5 @@ class PaymentListAPIView(ListAPIView):
     serializer_class = PaymentSerializer()
     queryset = Payment.objects.all()
     filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
-    ordering_fields = ['payment_date']
-    filterset_fields = ['course', 'lesson', 'payment_method']
+    ordering_fields = ["payment_date"]
+    filterset_fields = ["course", "lesson", "payment_method"]

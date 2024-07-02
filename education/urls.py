@@ -4,7 +4,8 @@ from rest_framework.routers import SimpleRouter
 from education.apps import EducationConfig
 from education.views import (CourseViewSet, LessonCreateAPIView,
                              LessonDestroyAPIView, LessonListAPIView,
-                             LessonRetrieveAPIView, LessonUpdateAPIView, PaymentListAPIView)
+                             LessonRetrieveAPIView, LessonUpdateAPIView,
+                             PaymentListAPIView)
 
 # Получаем имя приложения
 app_name = EducationConfig.name
@@ -24,7 +25,7 @@ urlpatterns = [
     path(
         "lessons/<int:pk>/update/", LessonUpdateAPIView.as_view(), name="lesson_update"
     ),
-    path("payments/", PaymentListAPIView.as_view(), name="payment_list")
+    path("payments/", PaymentListAPIView.as_view(), name="payment_list"),
 ]
 
 # Объединение
