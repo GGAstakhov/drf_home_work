@@ -1,5 +1,6 @@
 from django.db import models
 
+from config import settings
 from src.constants import NULLABLE
 from users.models import User
 
@@ -24,6 +25,14 @@ class Course(models.Model):
         verbose_name="Описание курса", help_text="Опишите суть курса", **NULLABLE
     )
 
+    # привязка к пользователю
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="пользователь",
+        **NULLABLE,
+    )
+
     def __str__(self):
         return f"{self.name}"
 
@@ -35,7 +44,9 @@ class Course(models.Model):
 # Класс модели Урок
 class Lesson(models.Model):
     # Поле для связывания моделей Курса и Урока
-    course = models.ForeignKey("Course", on_delete=models.CASCADE, verbose_name="курс")
+    course = models.ForeignKey(
+        "Course", on_delete=models.CASCADE, verbose_name="курс", **NULLABLE
+    )
     # Поле для хранения названия урока
     title = models.CharField(
         max_length=200, verbose_name="название", help_text="Укажите название урока"
@@ -53,6 +64,14 @@ class Lesson(models.Model):
     )
     # Поле для хранения ссылки на видео урока
     video_url = models.URLField(**NULLABLE, verbose_name="видео")
+
+    # привязка к пользователю
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="пользователь",
+        **NULLABLE,
+    )
 
     def __str__(self):
         return self.title

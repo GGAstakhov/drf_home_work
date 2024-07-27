@@ -257,3 +257,8 @@ cython_debug/
 #.idea/
 
 .idea/
+
+src/database.ini
+profile
+
+users/management
